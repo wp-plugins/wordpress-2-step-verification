@@ -1,0 +1,141 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress 2-step verification\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-10 22:14+0700\n"
+"PO-Revision-Date: 2012-08-10 22:14+0700\n"
+"Last-Translator: As247 <as247@vui360.com>\n"
+"Language-Team: \n"
+"Language: Vietnamses\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: D:\\www\\wp\\wp-plugins\\wp-content\\plugins"
+"\\wordpress-2-step-verification\n"
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:3
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:311
+msgid "Wordpress 2-step verification"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:7
+#, php-format
+msgid "2-step verification is <strong>%s</strong> for %s"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:15
+msgid "Turn off 2-step verification..."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:17
+msgid "Turn on 2-step verification..."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:193
+msgid ""
+"The e-mail could not be sent.\n"
+"    Possible reason: your host may have disabled the mail() function..."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:197
+msgid "Total emails can send per day has reached limit!"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:214
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:221
+msgid "The code you entered didn't verify."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:311
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:322
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:488
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:527
+msgid "2-Step Verification"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:328
+msgid "Log Out"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:384
+msgid "ON"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:386
+msgid "OFF"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:396
+msgid ""
+"Removing this data will turn off 2-step verification. Are you sure you want "
+"to delete this information?"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:421
+msgid "Email is invalid"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:427
+msgid "Code sent."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:429
+msgid "The e-mail could not be sent"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:436
+msgid "Your device is configured."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:437
+msgid "Click Next to continue."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:441
+msgid "The code is incorrect. Try again."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:472
+msgid "Your verification code"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:477
+#, php-format
+msgid "Your verification code is %s"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:492
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:531
+msgid "Status:"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:496
+msgid "Turn off 2-step verification"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:502
+msgid "Only the user can turn on 2-step verification"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:515
+msgid ""
+"Are you sure to turn off 2-step verification? Only the user can turn it on "
+"again!"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:533
+msgid "Edit"
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:61
+msgid "Enter the verification code generated by your mobile application."
+msgstr ""
+
+#: D:\www\wp\wp-plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:63
+#, php-format
+msgid "Enter the verification code sent to your email ending in %s."
+msgstr ""
