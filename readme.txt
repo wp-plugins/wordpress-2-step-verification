@@ -1,7 +1,7 @@
-=== Wordpress 2-step verification ===
+﻿=== Wordpress 2-step verification ===
 Contributors: as247
 Donate link: http://as247.vui360.com/blog
-Tags: 2-Step Verification, Authenticator, B?o m?t, Code, Google, Password, Securiry ,Username, Wordpress, X�c th?c 2 bu?c
+Tags: 2-Step Verification, Authenticator, Bảo mật, Code, Google, Password, Securiry ,Username, Wordpress, Xác thực 2 bước, Xác minh 2 bước
 Requires at least: 3.0
 Tested up to: 3.4.1
 Stable tag: 1.0
