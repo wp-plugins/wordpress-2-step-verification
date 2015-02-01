@@ -2,6 +2,7 @@
 class As247_OTP{
     var $secret_key;
     var $wp2sv;
+    var $secret_key_length=32;
     function __construct($wp2sv=''){
         if($wp2sv){
             $this->wp2sv=$wp2sv;
@@ -21,6 +22,7 @@ class As247_OTP{
             if($otp==$pass)
                 return true;
         }
+        return false;
     }
     function time(){
         $wp2sv_local_diff_utc=get_option('wp2sv_local_diff_utc');
@@ -45,7 +47,7 @@ class As247_OTP{
         }
         return false;
     }
-    function get_internet_time($cache=true){
+    function get_internet_time(){
         $time_stamp=wp_remote_get('http://www.timeanddate.com/scripts/ts.php');
         if(!is_object($time_stamp)){
             $time_stamp=$time_stamp['body'];
@@ -94,7 +96,7 @@ class As247_OTP{
     function generate_secret_key(){
         $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567'; // allowed characters in Base32
         $secret = '';
-        for ( $i = 0; $i < 16; $i++ ) {
+        for ( $i = 0; $i < $this->secret_key_length; $i++ ) {
             $secret .= substr( $chars, rand( 0, strlen( $chars ) - 1 ), 1 );
         }
         return $secret;
@@ -108,10 +110,9 @@ class As247_OTP{
         $i = 0;
         $count = 0;
         $stop=strlen($input);
-        while ($i < strlen($input)) {
+        while ($i < $stop) {
             $val =$input{$i++};
             $val=strpos($keyStr,$val);
-            //echo $val."<br/>";
             if ($val >= 0 && $val < 32) {
                 $buffer <<= 5;
                 $buffer |= $val;
@@ -129,5 +130,11 @@ class As247_OTP{
         $output=array_map('chr',$output);
         $output=implode('',$output);
         return $output;
+    }
+    function is64bit(){
+        if(PHP_INT_SIZE==8){
+            return true;
+        }
+        return false;
     }
 }

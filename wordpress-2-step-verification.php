@@ -36,13 +36,18 @@ class Wordpress2StepVerification{
     var $email_limit_per_day=10;
     var $error_message;
     var $wp2sv_page_menu;
+    var $current_config_page;
+    var $current_action;
 
     function __construct() {
         require_once(dirname(__FILE__).'/otp.php');
         require_once(dirname(__FILE__).'/auth.php');
         add_action( 'init', array( $this, 'init' ) );
         $this->load_text_domain('wp2sv');
-
+        $this->set_config_page($_POST['wp2sv_page_config']);
+    }
+    function set_config_page($page){
+        $this->current_config_page=$page;
     }
     function load_text_domain($domain){
         $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
@@ -96,6 +101,71 @@ class Wordpress2StepVerification{
         }
         $this->otp->set_secret_key($secret_key);
     }
+    function handle(){
+        $this->error_message='';
+        if(!$this->is_enabled())
+            return;
+        if($this->validate())
+            return;
+        if($this->is_new_day()){
+            $this->cleanup_restriction();
+        }
+        $scale=1;
+        $code=$_POST['wp2sv_code'];
+        $nonce=$_POST['wp2sv_nonce'];
+        $action=$_POST['wp2sv_action'];
+        if($action=='cancel'){
+            wp_logout();
+            wp_redirect(get_bloginfo('wpurl'));
+            die;
+        }
+        if($_POST&&!wp_verify_nonce($nonce,'wp2sv_nonce')){
+            wp_die('You do not have sufficient permissions to access this page.');
+        }
+        if($this->get_receive_method()=='email'&&$email=$this->wp2sv_email){
+
+            $sent=get_user_meta($this->user_id,'wp2sv_email_sent',true);
+
+            if($action=='send-email'||($this->get_available_method()=='email'&&!$sent)){
+                if($sent<$this->email_limit_per_day){
+                    $sent=absint($sent);
+                    if(@wp_mail($email,$this->get_email_subject(),$this->get_email_content())){
+                        $sent++;
+                        update_user_meta($this->user_id,'wp2sv_email_sent',$sent);
+                        update_user_meta($this->user_id,'wp2sv_email_sent_success',true);
+                    }else{
+                        $this->error_message=__("The e-mail could not be sent.
+    Possible reason: your host may have disabled the mail() function...",'wp2sv');
+                    }
+                }else{
+                    $this->error_message=__("Total emails can send per day has reached limit!",'wp2sv');
+                }
+            }
+            if($code && get_user_meta($this->user_id,'wp2sv_email_sent_success',true)){
+                $scale=$sent+1;
+                update_user_meta($this->user_id,'wp2sv_email_sent_success',false);
+            }
+        }
+
+        if($code){
+            if($this->get_receive_method()!='backup-codes'){
+                if($this->otp->check($code,$scale)){
+                    $this->code_check_ok();
+                }else{
+                    $this->error_message=__("The code you entered didn't verify.",'wp2sv');
+                }
+            }else{
+                if($this->check_backup_code($code)){
+                    $this->code_check_ok();
+                }else{
+                    $this->fail_backup_code($code);
+                    $this->error_message=__("The code you entered didn't verify.",'wp2sv');
+                }
+            }
+        }
+        $this->get_enter_code_template();
+        die;
+    }
     function save_data(){
         if(!current_user_can('read'))
             return false;
@@ -103,6 +173,7 @@ class Wordpress2StepVerification{
         if(!wp_verify_nonce($save,'wp2sv_save'))
             return false;
         $action=$_POST['wp2sv_action'];
+        $this->current_action=$action;
         $device=$_POST['wp2sv_device_type'];
         $email=$_POST['emailAddress'];
         if($action=='enable'){
@@ -141,10 +212,15 @@ class Wordpress2StepVerification{
         }
         if($action=='change_mobile'){
             $new_device=$_POST['settings-choose-app-type-radio'];
-            $_POST['wp2sv_page_config']='auto';
+            $this->set_config_page($new_device);
+            /*if(!get_user_meta($this->user_id,'wp2sv_tmp_secret_key',true)) {
+                $tmp_key=$this->otp->generate_secret_key();
+                update_user_meta($this->user_id, 'wp2sv_tmp_secret_key',$tmp_key);
+                $this->otp->set_secret_key($tmp_key);
+            }*/
             update_user_meta($this->user_id,'wp2sv_secret_key','');
             update_user_meta($this->user_id,'wp2sv_enabled','');
-            update_user_meta($this->user_id,'wp2sv_mobile_dev',$new_device);
+            //update_user_meta($this->user_id,'wp2sv_mobile_dev',$new_device);
         }
         if($action=='remove_email'){
             update_user_meta($this->user_id,'wp2sv_email','');
@@ -194,81 +270,20 @@ class Wordpress2StepVerification{
         }
         return $name;
     }
+    function is_configuring(){
+        return (bool)$this->current_config_page;
+    }
+    function configuring_device(){
+        $device=$this->get_app_name($this->get_current_page_config_name());
+        if(!$device){
+            $device=__('mobile','wp2sv');
+        }
+        return $device;
+    }
     function save_key(){
         echo wp_create_nonce('wp2sv_save');
     }
-    function handle(){
-        $this->error_message='';
-        if(!$this->is_enabled())
-            return;
-        if($this->validate())
-            return;
-        if($this->is_new_day()){
-            $this->cleanup_restriction();
-        }
-        $scale=1;
-        $code=$_POST['wp2sv_code'];
-        $nonce=$_POST['wp2sv_nonce'];
-        $action=$_POST['wp2sv_action'];
-        if($action=='cancel'){
-            wp_logout();
-            wp_redirect(get_bloginfo('wpurl'));
-            die;
-        }
-        if($_POST&&!wp_verify_nonce($nonce,'wp2sv_nonce')){
-            wp_die('You do not have sufficient permissions to access this page.');
-        }
-        if($this->get_receive_method()=='email'&&$email=$this->wp2sv_email){
-            
-            $sent=get_user_meta($this->user_id,'wp2sv_email_sent',true);
-            
-            if($action=='send-email'||($this->get_available_method()=='email'&&!$sent)){
-                if($sent<$this->email_limit_per_day){
-                    $sent=absint($sent);
-                    if(@wp_mail($email,$this->get_email_subject(),$this->get_email_content())){
-                        $sent++;
-                        update_user_meta($this->user_id,'wp2sv_email_sent',$sent);
-                        update_user_meta($this->user_id,'wp2sv_email_sent_success',true);
-                    }else{
-                        $this->error_message=__("The e-mail could not be sent.
-    Possible reason: your host may have disabled the mail() function...",'wp2sv');
-                    }
-                }else{
-                    $this->error_message=__("Total emails can send per day has reached limit!",'wp2sv');
-                }
-            }
-            if($code && get_user_meta($this->user_id,'wp2sv_email_sent_success',true)){
-                $scale=$sent+1;
-                update_user_meta($this->user_id,'wp2sv_email_sent_success',false);
-            }
-        }
 
-        
-
-        
-        if($code){
-            if($this->get_receive_method()!='backup-codes'){
-                if($this->otp->check($code,$scale)){
-                    $this->code_check_ok();
-                }else{
-                    $this->error_message=__("The code you entered didn't verify.",'wp2sv');
-                }
-            }else{
-                if($this->check_backup_code($code)){
-                    $this->code_check_ok();
-                }else{
-                    $this->fail_backup_code($code);
-                    $this->error_message=__("The code you entered didn't verify.",'wp2sv');
-                }
-            }
-            
-        }
-
-        
-        
-        $this->get_enter_code_template();
-        die;
-    }
     function code_check_ok(){
         $remember=$_POST['wp2sv_remember'];
         $this->cleanup_restriction();
@@ -323,7 +338,6 @@ class Wordpress2StepVerification{
     }
     function get_email_ending(){
         $email=$this->wp2sv_email;
-        
         $end=substr($email,strpos($email,'@')-1);
         return $end;
     }
@@ -388,7 +402,7 @@ class Wordpress2StepVerification{
     }
     function get_current_page_config_name(){
         $allow_pages=array('all','overview','android','iphone','blackberry','email','backup');
-        $current_page=$_POST['wp2sv_page_config'];
+        $current_page=$this->current_config_page;
         if(!$current_page){
             $current_page='overview';
         }
@@ -418,9 +432,7 @@ class Wordpress2StepVerification{
             include $page_file;
         }
     }
-    function is_configuring(){
-        return (bool)$_POST['wp2sv_page_config'];
-    }
+
     function personal_options_update($user_id){
         
     }
@@ -527,8 +539,8 @@ class Wordpress2StepVerification{
     }
     function secret_key(){
         $secret=$this->otp->get_secret_key();
-        $secret_arr=str_split(substr($secret,1),3);
-        array_unshift($secret_arr,substr($secret,0,1));
+        $secret_arr=str_split($secret,4);
+        //array_unshift($secret_arr,substr($secret,0,1));
         $secret_str=implode("\n",$secret_arr);
         echo $secret_str;
     }

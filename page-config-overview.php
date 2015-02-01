@@ -80,15 +80,13 @@
 	</h3>
 
 	<div id="printable-warning">
-		<span class="warning"><?php _e( 'Warning:' ); ?></span>
-		<?php _e( 'Trusted computers only ask for verification codes once every 30 days.
-  If you lose your phone, you might be able to access your account from 
-  a trusted computer without needing a code. We recommend that you make this a trusted computer only if you trust the people who have access to it.', 'wp2sv' ); ?>
+		<span class="warning"><?php _e( 'Warning:' ,'wp2sv'); ?></span>
+		<?php _e( 'Trusted computers only ask for verification codes once every 30 days. If you lose your phone, you might be able to access your account from a trusted computer without needing a code. We recommend that you make this a trusted computer only if you trust the people who have access to it.', 'wp2sv' ); ?>
 	</div>
 </div>
 <div class="section-data">
 	<input type="checkbox" name="trusted" id="trust_computer" value="1"<?php checked( $this->auth->remember ) ?>/>
-	<label for="trust_computer"><?php echo $this->auth->remember ? 'Trusted' : 'Untrusted'; ?></label>
+	<label for="trust_computer"><?php echo $this->auth->remember ? __('Trusted','wp2sv') : __('Untrusted','wp2sv'); ?></label>
 </div>
 <div class="section-data modal-section">
 	<div class="modal-dialog-bg" style="opacity: 0.75; display: none;" aria-hidden="true"></div>

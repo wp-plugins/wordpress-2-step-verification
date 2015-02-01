@@ -640,7 +640,10 @@ ol.phone-test-steps {
   margin-left: 1em;
 }
 .secret-key-box {
-  margin: 2px 35px 8px;
+  background-color: #f9edbe;
+  padding: 10px;
+  text-align: center;
+  width: 20em;
 }
 .secret-key {
   font-size: 14px;

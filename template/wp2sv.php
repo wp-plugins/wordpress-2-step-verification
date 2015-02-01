@@ -68,10 +68,10 @@ div.error {
   <div id="verify">
   <div>
   <label for="smsUserPin" id="pinlabel">
-  <?php _e('Enter code:');?>
+  <?php _e('Enter code:','wp2sv');?>
   </label>
   <input type="text" title="Verification codes contain only numbers." pattern="[0-9 ]*" dir="ltr" autocomplete="off" size="6" value="" id="smsUserPin" name="wp2sv_code">
-  <input type="submit" class="sa-button" value="Verify" id="smsVerifyPin" name="smsVerifyPin">
+  <input type="submit" class="sa-button" value="<?php _e('Verify','wp2sv');?>" id="smsVerifyPin" name="smsVerifyPin">
   </div>
   <?php if($this->error_message):?>
   <div class="error smaller" id="error">
@@ -82,7 +82,7 @@ div.error {
   <div class="padded" id="persistent-container">
   <input type="checkbox"<?php checked(true,$this->wp2sv_user_fav_trusted())?> value="yes" id="PersistentCookie" name="wp2sv_remember">
   <label for="PersistentCookie" class="smaller">
-  <?php _e('Remember this computer for 30 days.');?>
+  <?php _e('Remember this computer for 30 days.','wp2sv');?>
   </label>
   </div>
   <br/>

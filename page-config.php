@@ -14,11 +14,11 @@
         </p>
         <p>
             <?php if($this->wp2sv_enabled=='yes'):?>
-                <a href="#" id="wp2sv-disable-link" class="modal-open" data-modal="wp2sv-disable"><?php _e('Turn off 2-step verification...','wp2sv');?></a>
+                <a href="#" id="wp2sv-disable-link" class="modal-open" data-modal="wp2sv-disable"><?php _e('Turn off 2-step verification','wp2sv');?>...</a>
             <?php else:?>
-                <a href="#" id="wp2sv-enable-link"><?php _e('Turn on 2-step verification...','wp2sv');?></a>
+                <a href="#" id="wp2sv-enable-link"><?php _e('Turn on 2-step verification','wp2sv');?>...</a>
             <?php endif;?>
-            
+            <?php //echo $this->otp->get_decoded_secret_key();?>
         </p>
 
     </div>

@@ -20,7 +20,7 @@
 	<div class="config-section" id="mobile-device-type">
 		<div class="icon-content  icon-primaryphone" id="mobile-device-icon">
 			<select name="deviceType" id="device-type">
-				<option value="">Choose one:</option>
+				<option value=""><?php _e('Choose one:','wp2sv');?></option>
 				<optgroup label="<?php _e( 'Smartphone application', 'wp2sv' ); ?>">
 					<option value="android"<?php $this->last_page_selected('android');?>>Android</option>
 					<option value="iphone"<?php $this->last_page_selected('iphone');?>>iPhone</option>
@@ -43,13 +43,13 @@
            href="#"><?php _e( 'TURN ON 2-STEP VERIFICATION', 'wp2sv' ); ?></a>
     </span>
 	<span id="skip-step-container"><a href="#" id="skip-step" class="inactive"><?php _e('Skip this step','wp2sv')?></a></span>
-	<a href="#" id="cancel-link"><?php _e('Cancel');?></a>
+	<a href="#" id="cancel-link"><?php _e('Cancel','wp2sv');?></a>
 	<input type="hidden" name="Cancel">
 	<input type="hidden" value="primaryphone" name="WizardState">
 </div>
 <div id="inactive-elements" class="inactive">
 	<div class="config-section" id="email-address">
-		<div class="heading"><?php _e('Add an email address where Wordpress 2-step verification can send codes.');?></div>
+		<div class="heading"><?php _e('Add an email address where Wordpress 2-step verification can send codes.','wp2sv');?></div>
 		<div class="phone-widget" id="primary-phone-widget">
 			<table>
 				<tbody>
@@ -86,7 +86,7 @@
 					<li>
 						<div class="ml-list-item"><?php _e('Click "Send code" and check your email for the verification code.','wp2sv');?>
 							<div class="send-code-container">
-								<input type="submit" name="SendCode" value="Send code" id="primary-send-code"
+								<input type="submit" name="SendCode" value="<?php _e('Send code','wp2sv');?>" id="primary-send-code"
 								       disabled=""/>
                                 <span class="box">
                                     <img style="visibility: hidden;" class="icon smallicon" alt=""
@@ -124,21 +124,19 @@
 
 	<div id="remember-computer-state" class="config-section">
 		<div class="remember-heading">
-			<?php _e('Make this a','wp2sv');?> <span class="trusted-computer-emphasis"><?php _e('trusted computer');?></span>?
+			<?php _e('Make this a <span class="trusted-computer-emphasis">trusted computer</span>','wp2sv');?>?
 		</div>
 		<div class="remember-box">
 			<p class="remember-text">
 				<?php
-				_e('Trusted computers only ask for verification codes once every 30 days. If you lose your phone, you might
-				be able to access your account from a trusted computer without needing a code. We recommend that you
-				make this a trusted computer only if you trust the people who have access to it.','wp2sv');?>
+				_e('Trusted computers only ask for verification codes once every 30 days. If you lose your phone, you might be able to access your account from a trusted computer without needing a code. We recommend that you make this a trusted computer only if you trust the people who have access to it.','wp2sv');?>
 			</p>
 		</div>
 		<label for="rememberComputerVerify">
 			<input type="checkbox" id="rememberComputerVerify" name="trusted" checked=""/>
 			<?php _e('Trust this computer','wp2sv');?>
 			<br>
-			<span class="smaller" style="margin-left:24px;"><?php _e('You can always change which computers you trust in your Account settings.');?></span>
+			<span class="smaller" style="margin-left:24px;"><?php _e('You can always change which computers you trust in your Account settings.','wp2sv');?></span>
 		</label>
 	</div>
 
@@ -161,7 +159,7 @@
 		</div>
 		<ol class="app-instructions">
 			<li><p class="ml-list-item">
-					<?php _e('On your phone, go to the Android Market.','wp2sv');?>
+					<?php _e('On your phone, go to the Google Play Store.','wp2sv');?>
 				</p></li>
 			<li><p class="ml-list-item">
 					<?php _e('Search for <b>Google Authenticator</b>.','wp2sv');?>
@@ -179,7 +177,10 @@
 		</div>
 		<ol class="app-instructions">
 			<li>
-				<?php _e('In Google Authenticator, select Scan a barcode.','wp2sv');?>
+				<?php _e('In Google Authenticator, touch Menu and select "Set up account." ','wp2sv');?>
+			</li>
+			<li>
+				<?php _e('Select "Scan a barcode."','wp2sv');?>
 			</li>
 			<li>
 				<?php _e('Use your phone\'s camera to scan this barcode.','wp2sv');?>
@@ -197,27 +198,30 @@
 					</p></a>
 				<ol class="app-instructions inactive" id="manual-content-android">
 					<li>
-						<?php _e('In Google Authenticator, select Manually add account.','wp2sv');?>
+						<?php _e(' In Google Authenticator, touch Menu and select "Set up account."','wp2sv');?>
 					</li>
 					<li>
-						<?php _e('In "Enter account name" type your wordpress username.','wp2sv');?>
+						<?php _e('Select "Enter provided key"','wp2sv');?>
 					</li>
 					<li>
-						<?php _e('In "Enter key" type your secret key:','wp2sv');?>
+						<?php _e('In "Enter account name" type your wordpress username','wp2sv');?>
+					</li>
+					<li>
+						<?php _e('In "Enter your key" type your secret key:','wp2sv');?>
 						<div class="secret-key-box">
 							<div class="secret-key">
 								<?php $this->secret_key(); ?>
 							</div>
 							<div class="smaller subtitle">
-								<?php _e('Spaces don\'t matter.');?>
+								<?php _e('Spaces don\'t matter.','wp2sv');?>
 							</div>
 						</div>
 					</li>
 					<li>
-						<?php _e('Choose Time-based type of key.');?>
+						<?php _e('Key type: make sure "Time-based" is selected','wp2sv');?>
 					</li>
 					<li>
-						<?php _e('Tap Save.');?>
+						<?php _e('Tap Add.','wp2sv');?>
 					</li>
 				</ol>
 			</div>
@@ -238,10 +242,10 @@
 			<li><p class="ml-list-item">
 					<?php _e('Search for <b>Google Authenticator</b>.','wp2sv');?>
 					<span class="smaller secondary">(<a
-							href="http://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8" target="_blank"><?php _e('iTunes URL');?></a>)</span>
+							href="http://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8" target="_blank"><?php _e('Download from the App Store');?></a>)</span>
 				</p></li>
 			<li><p class="ml-list-item">
-					<?php _e('Tap the app, and then tap Free to download and install it.');?>
+					<?php _e('Tap the app, and then tap Free to download and install it.','wp2sv');?>
 				</p></li>
 		</ol>
 		<div class="heading">
@@ -249,7 +253,7 @@
 		</div>
 		<ol class="app-instructions">
 			<li>
-				<?php _e('In Google Authenticator, tap +, and then Scan Barcode.','wp2sv');?>
+				<?php _e('In Google Authenticator, tap "+", and then "Scan Barcode." ','wp2sv');?>
 			</li>
 			<li>
 				<?php _e('Use your phone\'s camera to scan this barcode','wp2sv');?>
@@ -270,7 +274,7 @@
 						<?php _e('In Google Authenticator, tap +.','wp2sv');?>
 					</li>
 					<li>
-						<?php _e('Choose Time-based type of key.','wp2sv');?>
+						<?php _e('Key type: make sure "Time-based" is selected. ','wp2sv');?>
 					</li>
 					<li>
 						<?php _e('In "Account" type your wordpress username.','wp2sv');?>
@@ -342,7 +346,8 @@
 	</div>
 	<div id="app-verify-success" class="active-text">
 		<p>
-			Your <span id="app-verify-type">mobile</span> device is configured.
+			<?php
+			printf(__('Your %s device is configured','wp2sv'),$this->configuring_device());?>.
 		</p>
 
 		<p class="last verify-success-click-next-message">
@@ -366,7 +371,7 @@
 		<div class="border-box mobile-app-step">
 			<div id="configure-app-instructions"></div>
 			<p class="last">
-				<?php _e('When the application is configured, type the code generated, and click Verify.','wp2sv');?>
+				<?php _e('Once you have scanned the barcode, enter the 6-digit verification code generated by the Authenticator app.','wp2sv');?>
 			</p>
 
 			<div class="verify-code-widget">
@@ -374,7 +379,7 @@
 					<?php _e('Code:','wp2sv');?>
 				</label>
 				<input type="text" size="6" dir="ltr" id="app-verify-code" name="verifyPinApp" autocomplete="off">&nbsp;
-				<input type="submit" value="<?php _e('Verify');?>" id="app-verify-button" name="VerifyApp">
+				<input type="submit" value="<?php _e('Verify','wp2sv');?>" id="app-verify-button" name="VerifyApp">
 			</div>
 			<img style="visibility: hidden;" class="icon smallicon" alt=""
 			     src="<?php $this->plugin_url(); ?>/images/loading.gif">

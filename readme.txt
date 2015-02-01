@@ -3,7 +3,7 @@ Contributors: as247
 Donate link: http://as247.vui360.com/blog
 Tags: 2-Step Verification, Authenticator, Bảo mật, Code, Google, Password, Securiry ,Username, Wordpress, Xác thực 2 bước, Xác minh 2 bước
 Requires at least: 3.0
-Tested up to: 3.4.1
+Tested up to: 4.1
 Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -38,3 +38,4 @@ Codes are time-dependent. Make sure your phone is set to the correct local time.
 
 = 1.0 =
 * Initial release.
+= 1.1 =
