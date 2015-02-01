@@ -36,6 +36,7 @@ class As247_OTP{
     function sync_time(){
         $utc=$this->get_internet_time();
         $last_sync=get_option('wp2sv_time_synced');
+        $last_sync=intval($last_sync);
         if((time()-$last_sync)<60){
             return false;
         }
