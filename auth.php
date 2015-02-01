@@ -97,10 +97,10 @@ class Wp2sv_Auth{
         //echo $auth_cookie;die;
         setcookie($this->cookie_name, $auth_cookie, $expire, COOKIEPATH, COOKIE_DOMAIN, $secure, true);
         setcookie($this->trusted_cookie_name, $remember, time()+31536000, COOKIEPATH, COOKIE_DOMAIN, $secure, true);
-	   if ( COOKIEPATH != SITECOOKIEPATH ){
+	    if ( COOKIEPATH != SITECOOKIEPATH ){
 	       	setcookie($this->cookie_name, $auth_cookie, $expire, SITECOOKIEPATH, COOKIE_DOMAIN, $secure, true);
             setcookie($this->trusted_cookie_name, $remember, time()+31536000, COOKIEPATH, COOKIE_DOMAIN, $secure, true);
-         }
+        }
     }
     function clear_cookie(){
         if ($cookie_elements = $this->parse_cookie() ) {

@@ -22,6 +22,9 @@
   line-height: 1;
   margin-bottom: 18px;
 }
+.wp2sv-config a:focus{
+    box-shadow: none;
+}
 h1.with-description, h2.with-description, h3.with-description {
   margin-bottom: 2px;
 }
@@ -36,42 +39,21 @@ h1.with-description, h2.with-description, h3.with-description {
   color: #F00;
   font-size: small;
 }
-.heading-description {
+.wp2sv-config .heading-description {
   line-height: 1;
   margin-bottom: 15px;
 }
-.inactive {
+.wp2sv-config .inactive {
   display: none;
 }
-.dialog {
+.wp2sv-config .dialog {
   left: 25%;
   position: absolute;
   top: 50px;
   width: 50%;
   z-index: 1003;
 }
-* html .dialog-filter {
-  position: absolute;
-  top: -400px;
-  left: -100px;
-  height: 10000px;
-  width: 10000px;
-  background: #000;
-  filter:alpha(opacity=25);
-  z-index: 1002;
-}
-.dialog-filter {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #000;
-  opacity: 0.25;
-  -moz-opacity: 0.25;
-  filter:alpha(opacity=25);
-  z-index: 1002;
-}
+
 .dialog-inline {
   float: left
 }
@@ -97,23 +79,8 @@ h1.with-description, h2.with-description, h3.with-description {
 .dialog-buttons input {
   margin-right: 20px;
 }
-p {
-  line-height: normal;
-  margin: 0;
-  padding: 0;
-}
-div {
-  line-height: 1;
-  margin: 0;
-  padding: 0;
-}
-h1, h2, h3 {
-  font-family: arial, sans-serif;
-}
-h3 {
-  margin: 0;
-}
-table {
+
+.wp2sv-config table {
   border-collapse: collapse;
   border-spacing: 0;
   border-style: none;
@@ -283,7 +250,7 @@ td.used {
   background: url(images/checkmark-g16.png) no-repeat left top;
 }
 .icon-loading {
-  background: url(images/ajax_loading.gif) no-repeat left top;
+  background: url(images/loading.gif) no-repeat left top;
 }
 .icon-checklist {
   background: url(images/checklist_pencil-o48.png) no-repeat left top;
@@ -453,7 +420,7 @@ div p.last {
   border-collapse: separate;
 }
 .blue-box-inner {
-  vertical-align: center;
+  vertical-align: middle;
   padding-bottom: 12px;
 }
 .blue-button-box {
@@ -496,7 +463,7 @@ div p.last {
   line-height: 1.3em;
 }
 .landing-box-play-icon {
-  background-color: ##E8EEFA;
+  background-color: #E8EEFA;
   border: none;
   height:13px;
   margin: 0 2px -3px 0;
@@ -924,4 +891,105 @@ img.inline {
 }
 .nlanding-page-cookiewarn-text > p {
   margin-top: 1em;
+}
+.modal-dialog-bg {
+  background: none repeat scroll 0 0 #fff;
+  left: 0;
+  position: fixed;
+  z-index: 9991;
+  top: 0;
+}
+
+.modal-dialog{
+  background: none repeat scroll 0 0 padding-box #fff;
+  border: 1px solid rgba(0, 0, 0, 0.333);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  outline: 0 none;
+  position: absolute;
+  color: #000;
+  padding: 30px 42px;
+  z-index: 9992 !important;
+}
+
+.modal-dialog-content {
+  background-color: #fff;
+  line-height: 1.4em;
+}
+.modal-dialog h2{
+  color: #222;
+  font-size: 1.54em;
+  font-weight: normal;
+  line-height: 24px;
+  margin: 0 0 0.46em;
+}
+.modal-dialog p{
+  line-height: 17px;
+  margin: 0 0 1em;
+}
+
+.settings-apptype-selector-box {
+  margin: 10px 30px;
+}
+
+.settings-apptype-radio {
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.modal-dialog-buttons {
+  margin-top: 16px;
+}
+.modal-dialog-buttons button {
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(center top , #f5f5f5, #f1f1f1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  color: #444;
+  cursor: default;
+  font-size: 11px;
+  font-weight: bold;
+  height: 29px;
+  line-height: 27px;
+  margin: 0 16px 0 0;
+  min-width: 72px;
+  outline: 0 none;
+  padding: 0 8px;
+}
+.modal-dialog-buttons .wp2sv-buttonset-action {
+  background-color: #4d90fe;
+  background-image: -moz-linear-gradient(center top , #4d90fe, #4787ed);
+  border: 1px solid #3079ed;
+  color: #fff;
+}
+.modal-dialog-title-close {
+  cursor: pointer;
+  height: 11px;
+  opacity: 0.7;
+  padding: 17px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+}
+.modal-dialog-title-close:after {
+  background: url("./images/close-x.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+  content: "";
+  height: 11px;
+  position: absolute;
+  right: 17px;
+  width: 11px;
+}
+.sync-link {
+  background: url("./images/sync-time.png") no-repeat scroll 0 0 / cover  rgba(0, 0, 0, 0);
+  display: inline-block;
+  height: 10px;
+  left: 10px;
+  padding: 5px !important;
+  position: relative;
+  text-indent: -9999px;
+  top: 9px;
+  width: 10px;
+}
+.sync-link.loading{
+  background: url("./images/sync-time.gif") no-repeat scroll 0 0 / cover  rgba(0, 0, 0, 0);
 }

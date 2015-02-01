@@ -12,10 +12,21 @@ Domain Path: /languages
 License: GPLv2 or later
 */
 class Wordpress2StepVerification{
+    /**
+     * @var As247_OTP
+     */
     var $otp;
+    /**
+     * @var Wp2sv_Auth
+     */
+    var $auth;
     var $user_id;
     var $user;
     var $wp2sv_email;
+    /**
+     * @var String
+     * Mobile device name: Android, iPhone or BlackBerry
+     */
     var $wp2sv_mobile;
     var $wp2sv_enabled;
     var $backup_codes;
@@ -24,14 +35,16 @@ class Wordpress2StepVerification{
     var $email_sent_last;
     var $email_limit_per_day=10;
     var $error_message;
+    var $wp2sv_page_menu;
+
     function __construct() {
         require_once(dirname(__FILE__).'/otp.php');
         require_once(dirname(__FILE__).'/auth.php');
         add_action( 'init', array( $this, 'init' ) );
-        $this->load_textdomain('wp2sv');
+        $this->load_text_domain('wp2sv');
 
     }
-    function load_textdomain($domain){
+    function load_text_domain($domain){
         $locale = apply_filters( 'plugin_locale', get_locale(), $domain );
         $locates[]=$locale;
         if($locate_parts=explode('_',$locale)){
@@ -39,10 +52,11 @@ class Wordpress2StepVerification{
         }
         $path=dirname(__FILE__).'/languages';
         foreach($locates as $locale){
-            $mofile = "$path/$locale.mo";
-            if($loaded=load_textdomain($domain, $mofile))
+            $mo_file = "$path/$locale.mo";
+            if($loaded=load_textdomain($domain, $mo_file))
                 return $loaded;
         }
+        return false;
     }
     function init(){
         
@@ -52,13 +66,6 @@ class Wordpress2StepVerification{
         $this->user_id=$user_id=$this->user->ID;
         if($user_id){
             $this->init_user_data();
-            $secret_key=get_user_meta($user_id,'wp2sv_secret_key',true);
-            if(!$secret_key){
-                $secret_key=$this->otp->generate_secret_key();
-                update_user_meta($user_id,'wp2sv_secret_key',$secret_key);
-                
-            }
-            $this->otp->set_secret_key($secret_key);
         }
         //if(is_admin())
             $this->handle();
@@ -75,6 +82,19 @@ class Wordpress2StepVerification{
         $this->wp2sv_enabled=get_user_meta($this->user_id,'wp2sv_enabled',true);
         $this->wp2sv_email=get_user_meta($this->user_id,'wp2sv_email',true);
         $this->wp2sv_mobile=get_user_meta($this->user_id,'wp2sv_mobile',true);
+        $this->setup_user_secret();
+    }
+    function setup_user_secret($user_id=0){
+        if(!$user_id){
+            $user_id=$this->user_id;
+        }
+        $secret_key=get_user_meta($user_id,'wp2sv_secret_key',true);
+        if(!$secret_key){
+            $secret_key=$this->otp->generate_secret_key();
+            update_user_meta($user_id,'wp2sv_secret_key',$secret_key);
+
+        }
+        $this->otp->set_secret_key($secret_key);
     }
     function save_data(){
         if(!current_user_can('read'))
@@ -96,7 +116,7 @@ class Wordpress2StepVerification{
             }
             update_user_meta($this->user_id,'wp2sv_enabled','yes');
             if($_POST['trusted']){
-                $this->auth->set_cookie($this->user_id,1);
+                $this->auth->set_cookie($this->user_id,true);
                 
             }else{
                 $this->auth->set_cookie($this->user_id);
@@ -116,14 +136,26 @@ class Wordpress2StepVerification{
             exit;
         }
         if($action=='remove_mobile'){
-            update_user_meta($this->user_id,'wp2sv_mobile','');
+            //update_user_meta($this->user_id,'wp2sv_mobile','');
+            //update_user_meta($this->user_id,'wp2sv_secret_key','');
+        }
+        if($action=='change_mobile'){
+            $new_device=$_POST['settings-choose-app-type-radio'];
+            $_POST['wp2sv_page_config']='auto';
+            update_user_meta($this->user_id,'wp2sv_secret_key','');
+            update_user_meta($this->user_id,'wp2sv_enabled','');
+            update_user_meta($this->user_id,'wp2sv_mobile_dev',$new_device);
         }
         if($action=='remove_email'){
             update_user_meta($this->user_id,'wp2sv_email','');
         }
         if($action=='disable'){
+            //update_user_meta($this->user_id,'wp2sv_secret_key','');
             update_user_meta($this->user_id,'wp2sv_enabled','');
             update_user_meta($this->user_id,'last_selected_device','');
+            if($_POST['wp2sv_clear_settings']){
+                $this->clear_settings();
+            }
         }
         if($action=='sync-clock'){
             $this->otp->sync_time();
@@ -131,12 +163,20 @@ class Wordpress2StepVerification{
         
         if(!$this->wp2sv_email&&!$this->wp2sv_mobile&&in_array($action,array('remove_mobile','remove_email'))){
             update_user_meta($this->user_id,'wp2sv_enabled','');
-            update_user_meta($this->user_id,'wp2sv_secret_key','');
             update_user_meta($this->user_id,'last_selected_device','');
         }
         $this->init_user_data();
-        //die;
+        return true;
         
+    }
+    function clear_settings(){
+        update_user_meta($this->user_id,'wp2sv_enabled','');
+        update_user_meta($this->user_id,'wp2sv_email','');
+        update_user_meta($this->user_id,'wp2sv_mobile','');
+        update_user_meta($this->user_id,'wp2sv_mobile_dev','');
+        update_user_meta($this->user_id,'wp2sv_secret_key','');
+        update_user_meta($this->user_id,'wp2sv_user_fav_trusted','');
+        update_user_meta($this->user_id,'last_selected_device','');
     }
     function get_app_name($device){
         switch($device){
@@ -159,7 +199,7 @@ class Wordpress2StepVerification{
     }
     function handle(){
         $this->error_message='';
-        if(!get_user_meta($this->user_id,'wp2sv_enabled',true))
+        if(!$this->is_enabled())
             return;
         if($this->validate())
             return;
@@ -169,7 +209,6 @@ class Wordpress2StepVerification{
         $scale=1;
         $code=$_POST['wp2sv_code'];
         $nonce=$_POST['wp2sv_nonce'];
-        $remember=$_POST['wp2sv_remember'];
         $action=$_POST['wp2sv_action'];
         if($action=='cancel'){
             wp_logout();
@@ -183,7 +222,7 @@ class Wordpress2StepVerification{
             
             $sent=get_user_meta($this->user_id,'wp2sv_email_sent',true);
             
-            if($action=='send-email'||($this->get_avaiable_method()=='email'&&!$sent)){
+            if($action=='send-email'||($this->get_available_method()=='email'&&!$sent)){
                 if($sent<$this->email_limit_per_day){
                     $sent=absint($sent);
                     if(@wp_mail($email,$this->get_email_subject(),$this->get_email_content())){
@@ -224,9 +263,7 @@ class Wordpress2StepVerification{
             }
             
         }
-       
-            //$this->error_message=__('You do not have sufficient permissions to access this page.');
-        
+
         
         
         $this->get_enter_code_template();
@@ -243,12 +280,17 @@ class Wordpress2StepVerification{
         update_user_meta($this->user_id,'wp2sv_email_sent',0);
     }
     function get_backup_codes(){
-        
+        $backup_codes=get_user_meta($this->user_id,'wp2sv_backup_codes',true);
+        return $backup_codes;
     }
     function the_backup_codes(){
         
     }
     function check_backup_code($code){
+        $backup_codes=$this->get_backup_codes();
+        if(in_array($code,$backup_codes)){
+            return true;
+        }
         return false;
     }
     function generate_backup_codes(){
@@ -268,14 +310,16 @@ class Wordpress2StepVerification{
         if($this->wp2sv_email){
             return 'email';
         }
+        return 'mobile';
     }
-    function get_avaiable_method(){
+    function get_available_method(){
         if($this->wp2sv_mobile){
             return 'mobile';
         }
         if($this->wp2sv_email){
             return 'email';
         }
+        return false;
     }
     function get_email_ending(){
         $email=$this->wp2sv_email;
@@ -288,33 +332,40 @@ class Wordpress2StepVerification{
     }
     function get_enter_code_template(){
         $template_file='wp2sv.php';
-        foreach(array(TEMPLATEPATH.'/wp2sv.php',dirname(__FILE__).'/template/wp2sv.php') as $template_file){
+        $templates=array(TEMPLATEPATH.'/'.$template_file,dirname(__FILE__).'/template/'.$template_file);
+        foreach($templates as $template_file){
             if(file_exists($template_file)){
                 include($template_file);
                 return;
             }
                 
         }
+        return ;
     }
     function validate(){
         return $this->user_id==$this->auth->validate_cookie();
     }
     function wp2sv_user_fav_trusted(){
         return $this->auth->is_trusted();
-        return (bool)get_user_meta($this->user_id,'wp2sv_user_fav_trusted',true);
+
     }
     function enqueue_scripts(){
-        wp_enqueue_script( 'wp2sv_js',plugins_url('/wp2sv.js',__FILE__) );
+        wp_enqueue_script( 'wp2sv_js',plugins_url('/wp2sv.js',__FILE__),array(),'1.1',true );
         wp_enqueue_style( 'wp2sv_css',plugins_url('/style.css',__FILE__) );
     }
     function user_menu_add(){
         
         $page=add_users_page( __('Wordpress 2-step verification','wp2sv'), __('2-Step Verification','wp2sv'), 'read', 'wp2sv', array($this,'config_page'));
-        $this->wp2sv_page=$page;
+        $this->wp2sv_page_menu=$page;
         add_action('admin_print_styles-' . $page, array($this,'enqueue_scripts'));
         add_action('admin_head-'.$page,array($this,'header'));
         add_action('admin_bar_menu',array($this,'admin_bar'),9);
     }
+
+    /**
+     * @param WP_Admin_Bar $wp_admin_bar
+     * @return void
+     */
     function admin_bar($wp_admin_bar){
         $wp_admin_bar->remove_menu('logout');
         $wp_admin_bar->add_menu( array(
@@ -341,18 +392,22 @@ class Wordpress2StepVerification{
         if(!$current_page){
             $current_page='overview';
         }
-        $last_page=get_user_meta($this->user_id,'last_selected_device',true);
+        //$last_page=get_user_meta($this->user_id,'last_selected_device',true);
         if($this->wp2sv_mobile&&$current_page=='auto'){
             $mobidev=get_user_meta($this->user_id,'wp2sv_mobile_dev',true);
             $current_page=$mobidev;
         }
         if(!in_array($current_page,$allow_pages)){
-            $current_page=$last_page;
+            //$current_page=$last_page;
         }
         if(!in_array($current_page,$allow_pages)){
             $current_page='all';
         }
         return $current_page;
+    }
+    function last_page_selected($page){
+        $last_page=get_user_meta($this->user_id,'last_selected_device',true);
+        selected($page,$last_page);
     }
     function get_current_page_config(){
         $current_page=$this->get_current_page_config_name();
@@ -387,7 +442,7 @@ class Wordpress2StepVerification{
             return __('OFF','wp2sv');
         }
     }
-    function is_enabled($user_id=0){
+    function is_enabled($user_id=null){
         if($user_id===null)
             $user_id=$this->user_id;
         $status=get_user_meta($user_id,'wp2sv_enabled',true);
@@ -398,6 +453,10 @@ class Wordpress2StepVerification{
         if($this->wp2sv_email&&$this->wp2sv_mobile){
             $message='';
         }
+        echo $message;
+    }
+    function change_confirm(){
+        $message=__('This will temporary turn off 2-step verification and take you to setup page','wp2sv');
         echo $message;
     }
     function header(){
@@ -447,23 +506,27 @@ class Wordpress2StepVerification{
                 $device=$_REQUEST['device-type'];
                 $result=update_user_meta($this->user_id,'last_selected_device',$device);
             break;
+            case 'time_sync':
+                $this->otp->sync_time();
+                $result=array('server_time'=>$this->otp->time(),'local_time'=>$this->otp->local_time());
+                break;
         }
         echo json_encode($result);
         die;
     }
     function chart_url($w=166,$h=166){
         $secret=$this->otp->get_secret_key();
-        $display=$this->user->display_name;
-        $host=parse_url(get_bloginfo('wpurl'),PHP_URL_HOST);
-        $display=$display."[$host]";
-        $secret_url=sprintf("otpauth://totp/%s?secret=%s",$display,$secret);
+        $display=$this->user->user_login;
+        $name=parse_url(get_bloginfo('wpurl'),PHP_URL_HOST);
+        //$name='As247';
+        $display=$name.'%3A'.$display;
+        $secret_url=sprintf("otpauth://totp/%s?secret=%s&issuer=%s",$display,$secret,$name);
         $secret_url=urlencode($secret_url);
         $chart_url=sprintf("https://chart.googleapis.com/chart?chs=%sx%s&chld=L|0&cht=qr&chl=%s",$w,$h,$secret_url);
         echo $chart_url;
     }
     function secret_key(){
         $secret=$this->otp->get_secret_key();
-        $secret_arr=array();
         $secret_arr=str_split(substr($secret,1),3);
         array_unshift($secret_arr,substr($secret,0,1));
         $secret_str=implode("\n",$secret_arr);
@@ -483,6 +546,7 @@ class Wordpress2StepVerification{
         if($_POST['wp2sv-turn-off']){
             update_user_meta($user_id,'wp2sv_enabled','');
         }
+        return true;
     }
     function edit_user_profile($user){
         ?>
@@ -509,13 +573,15 @@ class Wordpress2StepVerification{
         </tbody>
         </table>
         <script type="text/javascript">
+            var jQuery=jQuery||{};
             jQuery('#your-profile').ready(function($){
-                //alert('ready');
+                var turnOff;
+                turnOff = $("#wp2sv-turn-off").val('');
                 $("#wp2sv-turn-off-button").click(function(){
-                    $("#wp2sv-turn-off").val('');
+                    turnOff.val('');
                     if(!confirm('<?php _e('Are you sure to turn off 2-step verification? Only the user can turn it on again!','wp2sv')?>'))
                         return false;
-                    $("#wp2sv-turn-off").val('turn-off');
+                    turnOff.val('turn-off');
                     $("#submit").click();
                     return false;
                 })
@@ -523,7 +589,7 @@ class Wordpress2StepVerification{
         </script>
         <?php
     }
-    function profile_personal_options($user){
+    function profile_personal_options(){
         ?>
         <h3><?php _e('2-Step Verification','wp2sv');?></h3>
         <table class="form-table">

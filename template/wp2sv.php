@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<title>Enter verification code</title>
+<title><?php _e('Enter verification code','wp2sv');?></title>
 
 <style>
 body {
@@ -68,7 +68,7 @@ div.error {
   <div id="verify">
   <div>
   <label for="smsUserPin" id="pinlabel">
-  Enter code:
+  <?php _e('Enter code:');?>
   </label>
   <input type="text" title="Verification codes contain only numbers." pattern="[0-9 ]*" dir="ltr" autocomplete="off" size="6" value="" id="smsUserPin" name="wp2sv_code">
   <input type="submit" class="sa-button" value="Verify" id="smsVerifyPin" name="smsVerifyPin">
@@ -82,23 +82,24 @@ div.error {
   <div class="padded" id="persistent-container">
   <input type="checkbox"<?php checked(true,$this->wp2sv_user_fav_trusted())?> value="yes" id="PersistentCookie" name="wp2sv_remember">
   <label for="PersistentCookie" class="smaller">
-  Remember this computer for 30 days.
-  
+  <?php _e('Remember this computer for 30 days.');?>
   </label>
   </div>
   <br/>
   <?php if($this->has_email()):?>
       <div class="padded smaller" id="didnotreceive">
       <a href="javascript:emailCode()">
-      <?php if($this->get_receive_method()=='email'):?>
-            Didn't receive email? - Send code again
-      <?php else:?>
-            Don't have your phone? - Send code to your email
-      <?php endif;?>
+      <?php
+      if($this->get_receive_method()=='email'){
+          _e('Didn\'t receive email? - Send code again','wp2sv');
+      }else{
+          _e('Don\'t have your phone? - Send code to your email','wp2sv');
+      }
+      ?>
       </a></div>
   <?php endif;?>
   <div class="padded smaller" id="cancelLink">
-  <a href="javascript:cancel()">Cancel</a>
+  <a href="javascript:cancel()"><?php _e('Cancel','wp2sv');?></a>
   </div>
   </div>
   </form>

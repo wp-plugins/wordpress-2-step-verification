@@ -8,7 +8,7 @@ class As247_OTP{
         }
         date_default_timezone_set('UTC');
         if(!get_option('wp2sv_time_synced')){
-            update_option('wp2sv_time_synced',true);
+            update_option('wp2sv_time_synced',time());
             $this->sync_time();
         }
     }
@@ -27,17 +27,32 @@ class As247_OTP{
         $time=time()-$wp2sv_local_diff_utc;
         return $time;
     }
+    function local_time(){
+        $gmt=$this->time();
+        return $gmt+( get_option( 'gmt_offset' ) * HOUR_IN_SECONDS );
+    }
     function sync_time(){
         $utc=$this->get_internet_time();
-        $wp2sv_local_diff_utc=time()-$utc;
-        update_option('wp2sv_local_diff_utc',$wp2sv_local_diff_utc);
+        $last_sync=get_option('wp2sv_time_synced');
+        if((time()-$last_sync)<60){
+            return false;
+        }
+        update_option('wp2sv_time_synced',time());
+        if($utc) {
+            $wp2sv_local_diff_utc = time() - $utc;
+            update_option( 'wp2sv_local_diff_utc', $wp2sv_local_diff_utc );
+            return true;
+        }
+        return false;
     }
-    function get_internet_time(){
+    function get_internet_time($cache=true){
         $time_stamp=wp_remote_get('http://www.timeanddate.com/scripts/ts.php');
         if(!is_object($time_stamp)){
             $time_stamp=$time_stamp['body'];
             $time_stamp=explode(' ',$time_stamp);
             $time_stamp=$time_stamp[0];
+        }else{
+            return 0;
         }
         $time_stamp=(int)$time_stamp;
         return $time_stamp;
