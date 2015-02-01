@@ -1,0 +1,587 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Wordpress 2-step verification\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-01 14:48+0700\n"
+"PO-Revision-Date: 2015-02-01 14:48+0700\n"
+"Last-Translator: As247 <as247@vui360.com>\n"
+"Language-Team: \n"
+"Language: vi_VN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.7.4\n"
+"X-Poedit-SearchPath-0: D:\\study\\plugins\\wp-content\\plugins\\wordpress-2-"
+"step-verification\n"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:6
+msgid "Set up 2-step verification for"
+msgstr "Thiết lập xác minh 2 bước cho"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:10
+msgid "Set up your phone"
+msgstr "Thiết lập điện thoại của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:11
+msgid "Verify computer"
+msgstr "Xác minh máy tính"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:12
+msgid "Activate"
+msgstr "Kích hoạt"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:17
+msgid ""
+"Choose how you'd like to get verification codes &mdash; in an email,or from "
+"an application on your smartphone."
+msgstr ""
+"Chọn cách bạn muốn nhận được mã xác minh &mdash; sử dụng email, hoặc từ một "
+"ứng dụng trên điện thoại thông minh của bạn."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:23
+msgid "Choose one:"
+msgstr "Lựa chọn một:"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:24
+msgid "Smartphone application"
+msgstr "Ứng dụng điện thoại thông minh"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:43
+msgid "TURN ON 2-STEP VERIFICATION"
+msgstr "BẬT XÁC MINH 2 BƯỚC"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:45
+msgid "Skip this step"
+msgstr "Bỏ qua bước này"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:46
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:145
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:176
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:102
+msgid "Cancel"
+msgstr "Hủy bỏ"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:52
+msgid ""
+"Add an email address where Wordpress 2-step verification can send codes."
+msgstr "Thêm địa chỉ email để chúng tôi có thể gửi mã xác thực"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:66
+msgid "Enter your email address"
+msgstr "Nhập địa chỉ email của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:73
+msgid "ex:"
+msgstr ""
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:73
+msgid "example@domain.com"
+msgstr ""
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:83
+msgid "Let's test the email."
+msgstr "Hãy kiểm tra địa chỉ email"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:87
+msgid "Click \"Send code\" and check your email for the verification code."
+msgstr "Bấm \"Gửi mã\" và kiểm tra mã xác thực trong email của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:89
+msgid "Send code"
+msgstr "Gửi mã"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:101
+msgid "Enter the code you receive on your email"
+msgstr "Nhập mã bạn nhận được qua email"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:105
+msgid "Code"
+msgstr "Mã"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:109
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:382
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:74
+msgid "Verify"
+msgstr "Xác minh"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:127
+msgid ""
+"Make this a <span class=\"trusted-computer-emphasis\">trusted computer</span>"
+msgstr ""
+"Xác nhận đây là <span class=\"trusted-computer-emphasis\">máy tính đáng tin "
+"cậy</span>"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:132
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:84
+msgid ""
+"Trusted computers only ask for verification codes once every 30 days. If you "
+"lose your phone, you might be able to access your account from a trusted "
+"computer without needing a code. We recommend that you make this a trusted "
+"computer only if you trust the people who have access to it."
+msgstr ""
+"Các máy tính đáng tin cậy chỉ hỏi mã sau 30 ngày. Nếu bạn bị mất điện thoại "
+"bạn vẫn có thể truy cập vào tài khoản của bạn từ một máy tính đáng tin cậy "
+"mà không cần nhập mã. Chúng tôi khuyên bạn chỉ nên tin cậy máy tính này nếu "
+"bạn tin những người có thể dùng máy tính của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:137
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:79
+msgid "Trust this computer"
+msgstr "Tin tưởng máy tính này"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:139
+msgid ""
+"You can always change which computers you trust in your Account settings."
+msgstr ""
+"Bạn luôn có thể thay đổi các máy tính mà bạn tin tưởng trong cài đặt tài "
+"khoản của bạn."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:146
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:19
+msgid "Turn on 2-step verification"
+msgstr "Bật xác minh 2 bước"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:150
+msgid ""
+"You will be asked for a code whenever you sign in from an unrecognized "
+"computer or device."
+msgstr ""
+"Bạn sẽ được hỏi mã xác minh mỗi khi đăng nhập từ một máy tính hoặc thiết bị "
+"lạ"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:157
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:235
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:304
+msgid "Install the verification application for"
+msgstr "Cài đặt ứng dụng xác thực cho"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:162
+msgid "On your phone, go to the Google Play Store."
+msgstr "Trên điện thoại của bạn, truy cập Cửa hàng Google Play"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:165
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:243
+msgid "Search for <b>Google Authenticator</b>."
+msgstr "Tìm kiếm <b>Google Authenticator</b>."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:168
+msgid "Download from the Google Play Store"
+msgstr "Tải xuống từ Cửa hàng Google Play"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:171
+msgid "Download and install the application."
+msgstr "Tải xuống và cài đặt ứng dụng."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:176
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:252
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:319
+msgid "Now open and configure Google Authenticator."
+msgstr "Bây giờ hãy mở và định cấu hình Google Authenticator"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:180
+msgid "In Google Authenticator, touch Menu and select \"Set up account.\" "
+msgstr ""
+"Trong Google Authenticator, chạm vào Menu và chọn \"Thiết lập tài khoản\""
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:183
+msgid "Select \"Scan a barcode.\""
+msgstr "Chọn \"Quét mã vạch\"."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:186
+msgid "Use your phone's camera to scan this barcode."
+msgstr "Sử dụng máy ảnh của điện thoại của bạn để quét mã vạch này."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:197
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:270
+msgid "Can't scan the barcode?"
+msgstr "Bạn không thể quét mã vạch? "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:201
+msgid " In Google Authenticator, touch Menu and select \"Set up account.\""
+msgstr ""
+"Trong Google Authenticator, chạm vào Menu và chọn \"Thiết lập tài khoản\". "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:204
+msgid "Select \"Enter provided key\""
+msgstr "Chọn \"Nhập khóa được cung cấp\" "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:207
+msgid "In \"Enter account name\" type your wordpress username"
+msgstr "Trong \"Nhập tên tài khoản\", nhập tên người dùng wordpress của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:210
+msgid "In \"Enter your key\" type your secret key:"
+msgstr "Trong \"Nhập khóa\", nhập khóa bí mật của bạn:"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:216
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:289
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:335
+msgid "Spaces don't matter."
+msgstr "Dấu cách không quan trọng"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:221
+msgid "Key type: make sure \"Time-based\" is selected"
+msgstr "Loại khóa: đảm bảo \"Theo thời gian\" được chọn. "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:224
+msgid "Tap Add."
+msgstr "Nhấn Thêm. "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:240
+msgid "On your iPhone, tap the App Store icon."
+msgstr "Trên iPhone của bạn, chạm vào biểu tượng App Store."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:245
+msgid "Download from the App Store"
+msgstr "Tải xuống từ App Store"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:248
+msgid "Tap the app, and then tap Free to download and install it."
+msgstr ""
+"Chạm vào ứng dụng, sau đó chạm Miễn phí để tải xuống và cài đặt ứng dụng đó"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:256
+msgid "In Google Authenticator, tap \"+\", and then \"Scan Barcode.\" "
+msgstr "Trong Google Authenticator, nhấn vào \"+\", sau đó \"Quét mã vạch\". "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:259
+msgid "Use your phone's camera to scan this barcode"
+msgstr "Sử dụng máy ảnh của điện thoại của bạn để quét mã vạch này"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:274
+msgid "In Google Authenticator, tap +."
+msgstr "Trong Google Authenticator, chạm +."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:277
+msgid "Key type: make sure \"Time-based\" is selected. "
+msgstr "Loại khóa: đảm bảo \"Theo thời gian\" được chọn. "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:280
+msgid "In \"Account\" type your wordpress username."
+msgstr "Trong \"Tài khoản\", nhập tên người dùng wordpress của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:283
+msgid "In \"Key\" type your secret key:"
+msgstr "Trong \"Khóa\", nhập khóa bí mật của bạn:"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:294
+msgid "Tap Done."
+msgstr "Chạm Hoàn tất."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:309
+msgid "On your phone, open a web browser."
+msgstr "Trên điện thoại của bạn, mở trình duyệt web."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:312
+msgid "Go to <strong>m.google.com/authenticator</strong>"
+msgstr "Truy cập <strong>m.google.com/authenticator</strong>"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:315
+msgid "Download and install the Google Authenticator application."
+msgstr "Tải xuống và cài đặt ứng dụng Google Authenticator."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:323
+msgid "In Google Authenticator, select Manual key entry."
+msgstr "Trong Google Authenticator, chọn nhập khóa Thủ công."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:326
+msgid "In \"Enter account name\" type your wordpress username."
+msgstr "Trong \"Nhập tên tài khoản\", nhập tên tài khoản wordpress của bạn "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:329
+msgid "In \"Enter key\" type your secret key:"
+msgstr "Trong \"Nhập khóa\", nhập khóa bí mật của bạn: "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:340
+msgid "Choose Time-based type of key."
+msgstr "Chọn loại khóa dựa trên Thời gian."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:343
+msgid "Tap Save."
+msgstr "Chạm Lưu. "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:350
+#, php-format
+msgid "Your %s device is configured"
+msgstr "Thiết bị %s của bạn được cấu hình"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:354
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:367
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:509
+msgid "Click Next to continue."
+msgstr "Bấm Next để tiếp tục."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:358
+msgid ""
+"Tip: Codes are time-dependent. Make sure your phone is set to the\n"
+"\t\tcorrect local time."
+msgstr ""
+"Mẹo: Các mã phụ thuộc vào thời gian. Đảm bảo rằng điện thoại của bạn được "
+"đặt chính xác theo giờ địa phương. "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:363
+msgid "Your email is configured."
+msgstr "Email của bạn được thiết lập"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:374
+msgid ""
+"Once you have scanned the barcode, enter the 6-digit verification code "
+"generated by the Authenticator app."
+msgstr ""
+"Sau khi bạn đã quét mã vạch, hãy nhập mã xác minh gồm 6 chữ số do ứng dụng "
+"Authenticator tạo. "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-all.php:379
+msgid "Code:"
+msgstr "Mã"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:2
+msgid "How to receive codes"
+msgstr "Cách nhận mã"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:5
+msgid "Mobile application"
+msgstr "Ứng dụng di động"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:13
+msgid "Move to a different phone"
+msgstr "Chuyển sang điện thoại khác"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:31
+msgid "Email"
+msgstr ""
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:42
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:612
+msgid "Edit"
+msgstr "Chỉnh sửa"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:44
+msgid "Remove"
+msgstr "Xóa bỏ"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:83
+msgid "Warning:"
+msgstr "Cảnh báo:"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:89
+msgid "Trusted"
+msgstr "Tin tưởng"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:89
+msgid "Untrusted"
+msgstr "Không tin tưởng"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:101
+msgid "Move Authenticator to a different phone"
+msgstr "Chuyển Authenticator sang điện thoại khác "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:105
+msgid ""
+"We only support a single Authenticator app configured for your account. "
+"Please select your new phone type:"
+msgstr ""
+"Chúng tôi chỉ hỗ trợ một ứng dụng Authenticator được định cấu hình cho tài "
+"khoản của bạn. Vui lòng chọn loại điện thoại mới của bạn: "
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:109
+msgid "Please select one phone type bellow"
+msgstr "Vui lòng chọn một loại điện thoại dưới đây"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:136
+msgid "Once you complete this setup,"
+msgstr "Sau khi bạn hoàn tất thiết lập này,"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:137
+msgid "the codes generated by your old Authenticator app will stop working"
+msgstr "các mã do ứng dụng Authenticator cũ của bạn tạo sẽ dừng hoạt động"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:144
+msgid "Continue"
+msgstr "Tiếp tục"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:156
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:17
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:573
+msgid "Turn off 2-step verification"
+msgstr "Tắt xác minh 2 bước"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:160
+msgid ""
+"You will no longer be asked for verification codes when you sign in to your "
+"account"
+msgstr "Bạn sẽ không bị hỏi mã xác minh khi đăng nhập tài khoản của mình nữa"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:169
+msgid "Also clear my 2-step verification settings"
+msgstr "Đồng thời xóa cài đặt xác minh 2 bước"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config-overview.php:175
+msgid "Turn off"
+msgstr "Tắt"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:3
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:372
+msgid "Wordpress 2-step verification"
+msgstr "Wordpress xác minh 2 bước"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/page-config.php:7
+#, php-format
+msgid "2-step verification is <strong>%s</strong> for %s"
+msgstr "Xác minh 2 bước đang <strong>%s</strong> cho %s"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:4
+msgid "Enter verification code"
+msgstr "Nhập mã xác minh"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:63
+msgid "Enter the verification code generated by your mobile application."
+msgstr "Nhập mã xác minh được tạo ra bởi ứng dụng di động của bạn."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:65
+#, php-format
+msgid "Enter the verification code sent to your email ending in %s."
+msgstr "Nhập mã xác minh được gửi tới địa chỉ email kết thúc bởi %s."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:71
+msgid "Enter code:"
+msgstr "Nhập mã:"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:85
+msgid "Remember this computer for 30 days."
+msgstr "Nhớ máy tính này 30 ngày"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:94
+msgid "Didn't receive email? - Send code again"
+msgstr "Không nhận được email? - Gửi lại mã"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/template/wp2sv.php:96
+msgid "Don't have your phone? - Send code to your email"
+msgstr "Bạn không mang theo điện thoại? - Gửi mã tới email của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:137
+msgid ""
+"The e-mail could not be sent.\n"
+"    Possible reason: your host may have disabled the mail() function..."
+msgstr ""
+"Không thể gửi email.\n"
+" Có thể host của bạn đã vô hiệu hóa hàm mail()..."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:141
+msgid "Total emails can send per day has reached limit!"
+msgstr "Vượt quá số email cho phép trong ngày!"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:155
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:162
+msgid "The code you entered didn't verify."
+msgstr "Mã bạn nhập không đúng"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:279
+msgid "mobile"
+msgstr "di động"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:372
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:388
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:565
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:606
+msgid "2-Step Verification"
+msgstr "Xác minh 2 bước"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:394
+msgid "Log Out"
+msgstr "Đăng xuất"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:452
+msgid "ON"
+msgstr "BẬT"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:454
+msgid "OFF"
+msgstr "TẮT"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:464
+msgid ""
+"Removing this data will turn off 2-step verification. Are you sure you want "
+"to delete this information?"
+msgstr ""
+"Xóa dữ liệu này sẽ tắt xác minh 2 bước. Bạn có chắc chắn muốn xóa thông tin "
+"này?"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:471
+msgid ""
+"This will temporary turn off 2-step verification and take you to setup page"
+msgstr "Việc này sẽ tạm thời tắt xác minh 2 bước và bạn phải thiết lập lại"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:493
+msgid "Email is invalid"
+msgstr "Địa chỉ email không đúng"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:499
+msgid "Code sent."
+msgstr "Đã gửi mã xác minh."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:501
+msgid "The e-mail could not be sent"
+msgstr "Không thể gửi email."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:508
+msgid "Your device is configured."
+msgstr "Thiết bị của bạn được cấu hình."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:513
+msgid "The code is incorrect. Try again."
+msgstr "Mã xác minh không đúng. Hãy thử lại."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:548
+msgid "Your verification code"
+msgstr "Mã xác minh của bạn"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:553
+#, php-format
+msgid "Your verification code is %s"
+msgstr "Mã xác minh của bạn là %s"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:569
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:610
+msgid "Status:"
+msgstr "Trạng thái"
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:579
+msgid "Only the user can turn on 2-step verification"
+msgstr "Chỉ người dùng mới có thể bật xác minh 2 bước."
+
+#: D:\study\plugins\wp-content\plugins\wordpress-2-step-verification/wordpress-2-step-verification.php:594
+msgid ""
+"Are you sure to turn off 2-step verification? Only the user can turn it on "
+"again!"
+msgstr ""
+"Bạn có chắc muốn tắt xác minh 2 bước? Chỉ người dùng mới có thể bật lại nó!"
+
+#~ msgid "In Google Authenticator, select Scan a barcode."
+#~ msgstr ""
+#~ "Trong Google Authenticator, chạm vào Menu và chọn \"Thiết lập tài khoản"
+
+#~ msgid "Turn off 2-step verification..."
+#~ msgstr "Tắt xác minh 2 bước..."
+
+#~ msgid "Turn on 2-step verification..."
+#~ msgstr "Bật xác minh 2 bước..."
+
+#~ msgid ""
+#~ "Trusted computers only ask for verification codes once every 30 days. If "
+#~ "you lose your phone, you might\n"
+#~ "\t\t\t\tbe able to access your account from a trusted computer without "
+#~ "needing a code. We recommend that you\n"
+#~ "\t\t\t\tmake this a trusted computer only if you trust the people who "
+#~ "have access to it."
+#~ msgstr ""
+#~ "Các máy tính đáng tin cậy chỉ hỏi mã sau 30 ngày. Nếu bạn bị mất điện "
+#~ "thoại bạn vẫn\n"
+#~ "\t\t\t\tcó thể truy cập vào tài khoản của bạn từ một máy tính đáng tin "
+#~ "cậy mà không cần nhập mã. Chúng tôi khuyên bạn chỉ nên\n"
+#~ "\t\t\t\ttin cậy máy tính này nếu bạn tin những người có thể dùng máy tính "
+#~ "của bạn"
