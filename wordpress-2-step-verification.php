@@ -75,6 +75,7 @@ class Wordpress2StepVerification{
         //if(is_admin())
             $this->handle();
         add_action('admin_menu',array($this,'user_menu_add'));
+        add_action('network_admin_menu',array($this,'user_menu_add'));
         add_action('wp_logout',array($this->auth,'clear_cookie'));
         add_action('wp_ajax_wp2sv',array($this,'ajax'));
         add_action( 'profile_personal_options', array( $this, 'profile_personal_options' ) );
