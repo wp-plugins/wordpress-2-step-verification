@@ -4,7 +4,7 @@ Donate link: http://as247.vui360.com/blog/
 Tags: 2-Step Verification, Authenticator, Bảo mật, Code, Google, Password, Securiry ,Username, Wordpress, Xác thực 2 bước, Xác minh 2 bước
 Requires at least: 3.0
 Tested up to: 4.3
-Stable tag: 1.1.2
+Stable tag: 1.1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,3 +60,5 @@ If an user turn it `ON` that mean he will be asked for code once login on all si
 * Add Some missing icon
 = 1.1.2 =
 * Fix sync time issue
+= 1.1.3 =
+* Compatible with Wordpress 4.3
